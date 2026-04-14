@@ -1,0 +1,40 @@
+{
+  "name": "studio-functions",
+  "version": "1.0.0",
+  "description": "Um compilado de funções prontas - Olos Studio",
+  "main": "index.js",
+  "scripts": {
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --coverage",
+    "lint": "eslint functions/",
+    "lint:fix": "eslint --fix functions/",
+    "prepare": "husky",
+    "prettier": "prettier --write ."
+  },
+  "type": "module",
+  "author": "Olos Technology",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.0",
+    "@eslint/js": "^10.0.1",
+    "babel-jest": "^30.3.0",
+    "eslint": "^10.0.3",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "globals": "^17.4.0",
+    "husky": "^9.1.7",
+    "jest": "^30.3.0",
+    "lint-staged": "^16.3.3",
+    "prettier": "^3.8.1"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --findRelatedTests --passWithNoTests"
+    ]
+  },
+  "dependencies": {
+    "cross-env": "^10.1.0"
+  }
+}

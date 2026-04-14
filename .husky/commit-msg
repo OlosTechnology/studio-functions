@@ -1,0 +1,30 @@
+commit_msg=$(cat "$1")
+
+pattern="^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?(!)?: .{1,}"
+
+if ! echo "$commit_msg" | grep -Eq "$pattern"; then
+  echo "❌ Commit message inválido!"
+  echo ""
+  echo "O commit deve seguir o padrão Conventional Commits:"
+  echo "  <tipo>(escopo opcional): <descrição>"
+  echo ""
+  echo "Tipos permitidos:"
+  echo "  feat     - Nova funcionalidade"
+  echo "  fix      - Correção de bug"
+  echo "  docs     - Alteração em documentação"
+  echo "  style    - Formatação (sem mudança de lógica)"
+  echo "  refactor - Refatoração de código"
+  echo "  perf     - Melhoria de performance"
+  echo "  test     - Adição ou correção de testes"
+  echo "  build    - Alteração em build ou dependências"
+  echo "  ci       - Alteração em CI/CD"
+  echo "  chore    - Tarefas diversas"
+  echo "  revert   - Reversão de commit"
+  echo ""
+  echo "Exemplos:"
+  echo "  feat: adicionar validação de CPF"
+  echo "  fix(validarCNPJ): corrigir cálculo do dígito verificador"
+  echo "  docs: atualizar README com instruções de uso"
+  echo ""
+  exit 1
+fi

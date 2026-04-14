@@ -1,0 +1,9 @@
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+if [ "$branch" = "main" ]; then
+  echo "❌ Commits diretos na branch 'main' não são permitidos!"
+  echo "Crie uma branch e abra um Pull Request."
+  exit 1
+fi
+
+npx lint-staged
